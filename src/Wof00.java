@@ -4,6 +4,16 @@
  * @author Lubomir Sadlon
  * @version 21.2.2012
  */
+
+//Namety na vylepsenie
+/*
+nove miestnosti
+ukoncenie hry na zaklade nejakej udalosti
+predmety
+mena (mince body...), zivot
+npc
+questy
+*/
 public class Wof00 {
 
     /**
