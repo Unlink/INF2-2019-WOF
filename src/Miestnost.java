@@ -1,3 +1,6 @@
+
+import java.util.HashMap;
+
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
  * Kazda "miestnost" je z inymi miestnostami spojena vychodmi. 
@@ -12,44 +15,33 @@
  */
 public class Miestnost {
     private String popisMiestnosti;
-    private Miestnost severnyVychod;
-    private Miestnost juznyVychod;
-    private Miestnost vychodnyVychod;
-    private Miestnost zapadnyVychod;
+    private HashMap<String, Miestnost> vychody;
+    private final String nazov;
 
     /**
      * Vytvori miestnost popis ktorej je v parametrom.
      * Po vytvoreni miestnost nema ziadne vychody. Popis miesnost strucne 
      * charakterizuje.
      * 
+     * @param nazov
      * @param popis text popisu miestnosti.
      */
-    public Miestnost(String popis) {
+    public Miestnost(String nazov, String popis) {
         this.popisMiestnosti = popis;
+        this.vychody = new HashMap<>();
+        this.nazov = nazov;
+    }
+
+    public String getNazov() {
+        return this.nazov;
     }
 
     /**
-     * Nastavi vychody z miestnosti. Kazdy vychod je urceny bud odkazom 
-     * na miestnost alebo hodnotou null, ak vychod tym smerom neexistuje.
-     * 
-     * @param sever miestnost smerom na sever.
-     * @param vychod miestnost smerom na vychod.
-     * @param juh miestnost smerom na juh.
-     * @param zapad miestnost smerom na zapad.
+     * Nastavi vychod z miestnosti.
+     * @param miestnost
      */
-    public void nastavVychody(Miestnost sever, Miestnost vychod, Miestnost juh, Miestnost zapad) {
-        if (sever != null) {
-            this.severnyVychod = sever;
-        }
-        if (vychod != null) {
-            this.vychodnyVychod = vychod;
-        }
-        if (juh != null) {
-            this.juznyVychod = juh;
-        }
-        if (zapad != null) {
-            this.zapadnyVychod = zapad;
-        }
+    public void nastavVychod(Miestnost miestnost) {
+        this.vychody.put(miestnost.getNazov(), miestnost);
     }
 
     /**
@@ -59,56 +51,19 @@ public class Miestnost {
         return this.popisMiestnosti;
     }
 
-    public Miestnost getSevernyVychod() {
-        return severnyVychod;
-    }
-
-    public Miestnost getJuznyVychod() {
-        return juznyVychod;
-    }
-
-    public Miestnost getVychodnyVychod() {
-        return vychodnyVychod;
-    }
-
-    public Miestnost getZapadnyVychod() {
-        return zapadnyVychod;
-    }
-
     public void vypisInfo() {
         System.out.print("Vychody: ");
-        if (this.getSevernyVychod() != null) {
-            System.out.print("sever ");
+        for (String kluc : this.vychody.keySet()) {
+            System.out.print(kluc + " ");
         }
-        if (this.getVychodnyVychod() != null) {
-            System.out.print("vychod ");
-        }
-        if (this.getJuznyVychod() != null) {
-            System.out.print("juh ");
-        }
-        if (this.getZapadnyVychod() != null) {
-            System.out.print("zapad ");
-        }
+        /*for (Miestnost miestnost : this.vychody.values()) {
+             System.out.print(miestnost.getNazov() + " ");
+        }*/
         System.out.println();
     }
 
     public Miestnost dajMiestnost(String smer) {
-        Miestnost novaMiestnost = null;
-        switch (smer) {
-            case "sever":
-                novaMiestnost = this.severnyVychod;
-                break;
-            case "vychod":
-                novaMiestnost = this.vychodnyVychod;
-                break;
-            case "juh":
-                novaMiestnost = this.juznyVychod;
-                break;
-            case "zapad":
-                novaMiestnost = this.zapadnyVychod;
-                break;
-        }
-        return novaMiestnost;
+        return this.vychody.get(smer);
     }
     
     
