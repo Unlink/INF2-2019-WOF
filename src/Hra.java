@@ -82,21 +82,9 @@ public class Hra  {
         System.out.println("Zadaj 'pomoc' ak potrebujes pomoc.");
         System.out.println();
         System.out.println("Teraz si v miestnosti " + this.aktualnaMiestnost.getPopis());
-        System.out.print("Vychody: ");
-        if (this.aktualnaMiestnost.severnyVychod != null) {
-            System.out.print("sever ");
-        }
-        if (this.aktualnaMiestnost.vychodnyVychod != null) {
-            System.out.print("vychod ");
-        }
-        if (this.aktualnaMiestnost.juznyVychod != null) {
-            System.out.print("juh ");
-        }
-        if (this.aktualnaMiestnost.zapadnyVychod != null) {
-            System.out.print("zapad ");
-        }
-        System.out.println();
+        aktualnaMiestnost.vypisInfo();
     }
+
 
     /**
      * Prevezne prikaz a vykona ho.
@@ -156,41 +144,14 @@ public class Hra  {
         String smer = prikaz.getParameter();
 
         // Pokus o opustenie aktualnej miestnosti danym vychodom.
-        Miestnost novaMiestnost = null;
-        switch (smer) {
-            case "sever":
-                novaMiestnost = this.aktualnaMiestnost.severnyVychod;
-                break;
-            case "vychod":
-                novaMiestnost = this.aktualnaMiestnost.vychodnyVychod;
-                break;
-            case "juh":
-                novaMiestnost = this.aktualnaMiestnost.juznyVychod;
-                break;
-            case "zapad":
-                novaMiestnost = this.aktualnaMiestnost.zapadnyVychod;
-                break;
-        }
+        Miestnost novaMiestnost = aktualnaMiestnost.dajMiestnost(smer);
 
         if (novaMiestnost == null) {
             System.out.println("Tam nie je vychod!");
         } else {
             this.aktualnaMiestnost = novaMiestnost;
             System.out.println("Teraz si v miestnosti " + this.aktualnaMiestnost.getPopis());
-            System.out.print("Vychody: ");
-            if (this.aktualnaMiestnost.severnyVychod != null) {
-                System.out.print("sever ");
-            }
-            if (this.aktualnaMiestnost.vychodnyVychod != null) {
-                System.out.print("vychod ");
-            }
-            if (this.aktualnaMiestnost.juznyVychod != null) {
-                System.out.print("juh ");
-            }
-            if (this.aktualnaMiestnost.zapadnyVychod != null) {
-                System.out.print("zapad ");
-            }
-            System.out.println();
+            novaMiestnost.vypisInfo();
         }
     }
 
