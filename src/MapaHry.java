@@ -21,10 +21,41 @@ public class MapaHry {
     }
  
     public void vytvorMiestnosti() {
-        this.vytvorMiestnost("terasa", "Terasa pred fakultou");
-        this.vytvorMiestnost("vratnica", "Vratnica na FRI");
-    
+        String[][] miestnosti = new String[][] {
+            {"terasa", "Terasa pred fakultou"},
+            {"vratnica", "Vratnica fakulty FRI"},
+            {"chodba", ""},
+            {"chodbaA", ""},
+            {"chodbaB", ""},
+            {"jedalen", ""},
+            {"bufet", ""},
+            {"a12", ""},
+            {"a6", ""},
+            {"wc", ""}
+        };
+        
+        String[][] dvere = new String[][] {
+            {"terasa", "vratnica"},
+            {"chodba", "vratnica"},
+            {"chodba", "wc"},
+            {"chodba", "jedalen"},
+            {"chodba", "chodbaA"},
+            {"chodba", "chodbaB"},
+            {"chodbaA", "a12"},
+            {"chodbaA", "a6"},
+            {"jedalen", "bufet"},
+        };
+        
+        for (String[] miestnost : miestnosti) {
+            this.vytvorMiestnost(miestnost[0], miestnost[1]);
         }
+    
+        for (String[] prechod : dvere) {
+            this.prepojMiestnosti(prechod[0], prechod[1]);
+        }
+        
+        this.startovaciaMiestnost = this.miestnosti.get("vratnica");
+    }
 
     private void vytvorMiestnost(String nazov, String popis) {
         Miestnost miestnost = new Miestnost(nazov, popis);
