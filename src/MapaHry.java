@@ -24,14 +24,14 @@ public class MapaHry {
         String[][] miestnosti = new String[][] {
             {"terasa", "Terasa pred fakultou"},
             {"vratnica", "Vratnica fakulty FRI"},
-            {"chodba", ""},
-            {"chodbaA", ""},
-            {"chodbaB", ""},
-            {"jedalen", ""},
-            {"bufet", ""},
-            {"a12", ""},
-            {"a6", ""},
-            {"wc", ""}
+            {"chodba", "chodba"},
+            {"chodbaA", "chodba na acku"},
+            {"chodbaB", "chodba na becku"},
+            {"jedalen", "jedalen"},
+            {"bufet", "bufet"},
+            {"a12", "a12"},
+            {"a6", "a6"},
+            {"wc", "toaleta"}
         };
         
         String[][] dvere = new String[][] {
@@ -54,7 +54,7 @@ public class MapaHry {
             this.prepojMiestnosti(prechod[0], prechod[1]);
         }
         
-        this.startovaciaMiestnost = this.miestnosti.get("vratnica");
+        this.startovaciaMiestnost = this.miestnosti.get("terasa");
     }
 
     private void vytvorMiestnost(String nazov, String popis) {
