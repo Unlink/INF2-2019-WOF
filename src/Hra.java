@@ -20,8 +20,8 @@
  
 public class Hra  {
     private Parser parser;
-    private Miestnost aktualnaMiestnost;
     private MapaHry mapa;
+    private Hrac hrac;
     
     /**
      * Vytvori a inicializuje hru.
@@ -30,7 +30,7 @@ public class Hra  {
         this.parser = new Parser();
         this.mapa = new MapaHry();
         this.mapa.vytvorMiestnosti();
-        this.aktualnaMiestnost = this.mapa.dajStartovaciuMiestnost();
+        this.hrac = new Hrac(this.mapa.dajStartovaciuMiestnost());
     }
 
     /**
@@ -63,8 +63,8 @@ public class Hra  {
         System.out.println("World of FRI je nova, neuveritelne nudna adventura.");
         System.out.println("Zadaj 'pomoc' ak potrebujes pomoc.");
         System.out.println();
-        System.out.println("Teraz si v miestnosti " + this.aktualnaMiestnost.getPopis());
-        aktualnaMiestnost.vypisInfo();
+        System.out.println("Teraz si v miestnosti " + this.hrac.getAktualnaMiestnost().getPopis());
+        this.hrac.getAktualnaMiestnost().vypisInfo();
     }
 
 
@@ -89,7 +89,7 @@ public class Hra  {
                 this.vypisNapovedu();
                 return false;
             case "chod":
-                this.chodDoMiestnosti(prikaz);
+                this.hrac.chodDoMiestnosti(prikaz);
                 return false;
             case "ukonci":
                 return this.ukonciHru(prikaz);
@@ -111,31 +111,6 @@ public class Hra  {
         System.out.println("   chod ukonci pomoc");
     }
 
-    /** 
-     * Vykona pokus o prechod do miestnosti urcenej danym smerom.
-     * Ak je tym smerom vychod, hrac prejde do novej miestnosti.
-     * Inak sa vypise chybova sprava do terminaloveho okna.
-     */
-    private void chodDoMiestnosti(Prikaz prikaz) {
-        if (!prikaz.maParameter()) {
-            // ak prikaz nema parameter - druhe slovo - nevedno kam ist
-            System.out.println("Chod kam?");
-            return;
-        }
-
-        String smer = prikaz.getParameter();
-
-        // Pokus o opustenie aktualnej miestnosti danym vychodom.
-        Miestnost novaMiestnost = aktualnaMiestnost.dajMiestnost(smer);
-
-        if (novaMiestnost == null) {
-            System.out.println("Tam nie je vychod!");
-        } else {
-            this.aktualnaMiestnost = novaMiestnost;
-            System.out.println("Teraz si v miestnosti " + this.aktualnaMiestnost.getPopis());
-            novaMiestnost.vypisInfo();
-        }
-    }
 
     /** 
      * Ukonci hru.
