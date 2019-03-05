@@ -1,3 +1,5 @@
+package worldOfFri.hra;
+
 /**
  * Hlavna trieda hry WoF s metodou main - spustanie v NB
  * 

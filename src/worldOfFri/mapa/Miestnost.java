@@ -1,4 +1,7 @@
+package worldOfFri.mapa;
 
+
+import worldOfFri.predmety.IPredmet;
 import java.util.HashMap;
 
 /**

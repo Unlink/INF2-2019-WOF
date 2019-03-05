@@ -1,3 +1,8 @@
+package worldOfFri.hra;
+
+
+import worldOfFri.mapa.MapaHry;
+
 /**
  * Trieda Hra je hlavna trieda aplikacie "World of FRI".
  * "World of FRI" je velmi jednoducha textova hra - adventura. 

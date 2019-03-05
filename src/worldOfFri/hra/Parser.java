@@ -1,3 +1,5 @@
+package worldOfFri.hra;
+
 import java.util.Scanner;
 
 /**

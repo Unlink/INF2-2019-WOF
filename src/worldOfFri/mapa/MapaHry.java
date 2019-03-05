@@ -1,4 +1,9 @@
+package worldOfFri.mapa;
 
+
+import worldOfFri.predmety.Kocka;
+import worldOfFri.predmety.Hodinky;
+import worldOfFri.predmety.Predmet;
 import java.util.HashMap;
 
 /*
@@ -56,6 +61,7 @@ public class MapaHry {
         
         this.miestnosti.get("terasa").pridajPredmet(new Predmet("pero"));
         this.miestnosti.get("terasa").pridajPredmet(new Hodinky());
+        this.miestnosti.get("terasa").pridajPredmet(new Kocka());
         
         this.startovaciaMiestnost = this.miestnosti.get("terasa");
     }

@@ -1,5 +1,4 @@
-
-import java.time.LocalDateTime;
+package worldOfFri.predmety;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -7,18 +6,20 @@ import java.time.LocalDateTime;
  * and open the template in the editor.
  */
 
-
-public class Hodinky implements IPredmet {
+/**
+ *
+ * @author duracik2
+ */
+public class Kocka implements IPredmet {
 
     @Override
     public String getNazov() {
-        return "hodinky";
+        return "kocka";
     }
 
     @Override
     public void pouzi() {
-        LocalDateTime aktualnyCas = LocalDateTime.now();
-        System.out.println(aktualnyCas.toLocalTime().toString());
+        System.out.println(((int)(Math.random()*6)) + 1);
     }
     
 }
