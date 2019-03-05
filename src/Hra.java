@@ -96,6 +96,9 @@ public class Hra  {
             case "vezmi":
                 this.hrac.vezmiPredmet(prikaz);
                 return false;
+            case "inventar":
+                this.hrac.vypisInventar();
+                return false;
             default:
                 return false;
         }

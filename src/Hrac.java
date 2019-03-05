@@ -56,6 +56,16 @@ public class Hrac {
             System.out.println("Mas novy predmet - " + predmet.getNazov());
         }
     }
-    
-    
+
+    public void vypisInventar() {
+        if (this.batoh.size() > 0) {
+            System.out.println("Inventar:");
+            for (Predmet predmet : this.batoh.values()) {
+                System.out.println("- " + predmet.getNazov());
+            }
+        } else {
+            System.out.println("Inventar je prazdny");
+        }
+    }
+   
 }
