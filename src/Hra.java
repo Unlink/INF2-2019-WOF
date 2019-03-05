@@ -93,6 +93,9 @@ public class Hra  {
                 return false;
             case "ukonci":
                 return this.ukonciHru(prikaz);
+            case "vezmi":
+                this.hrac.vezmiPredmet(prikaz);
+                return false;
             default:
                 return false;
         }

@@ -1,3 +1,6 @@
+
+import java.util.HashMap;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,9 +13,11 @@
  */
 public class Hrac {
     private Miestnost aktualnaMiestnost;
+    private HashMap<String, Predmet> batoh;
 
     public Hrac(Miestnost startovaciaMiestnost) {
         this.aktualnaMiestnost = startovaciaMiestnost;
+        this.batoh = new HashMap<>();
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -39,6 +44,16 @@ public class Hrac {
             this.aktualnaMiestnost = novaMiestnost;
             System.out.println("Teraz si v miestnosti " + this.aktualnaMiestnost.getPopis());
             novaMiestnost.vypisInfo();
+        }
+    }
+
+    public void vezmiPredmet(Prikaz prikaz) {
+        Predmet predmet = this.aktualnaMiestnost.zodvihniPredmet(prikaz.getParameter());
+        if (predmet == null) {
+            System.out.println("Tento predmet nieje v miestnosti");
+        } else {
+            this.batoh.put(predmet.getNazov(), predmet);
+            System.out.println("Mas novy predmet - " + predmet.getNazov());
         }
     }
     

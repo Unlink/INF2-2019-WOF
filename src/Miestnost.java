@@ -77,6 +77,10 @@ public class Miestnost {
     public Miestnost dajMiestnost(String smer) {
         return this.vychody.get(smer);
     }
+
+    public Predmet zodvihniPredmet(String nazov) {
+        return this.predmety.remove(nazov);
+    }
     
     
 }
