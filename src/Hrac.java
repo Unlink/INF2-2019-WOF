@@ -67,5 +67,14 @@ public class Hrac {
             System.out.println("Inventar je prazdny");
         }
     }
+
+    public void pouziPredmet(Prikaz prikaz) {
+        Predmet predmet = this.batoh.get(prikaz.getParameter());
+        if (predmet == null) {
+            System.out.println("Takyto predmet nemas");
+        } else {
+            predmet.pouzi();
+        }
+    }
    
 }

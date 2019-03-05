@@ -55,6 +55,7 @@ public class MapaHry {
         }
         
         this.miestnosti.get("terasa").pridajPredmet(new Predmet("pero"));
+        this.miestnosti.get("terasa").pridajPredmet(new Predmet("hodinky"));
         
         this.startovaciaMiestnost = this.miestnosti.get("terasa");
     }

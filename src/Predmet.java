@@ -1,3 +1,6 @@
+
+import java.time.LocalDateTime;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,6 +24,17 @@ public class Predmet {
     }
 
     public String getNazov() {
-        return nazov;
+        return this.nazov;
+    }
+
+    public void pouzi() {
+        switch (this.nazov) {
+            case "hodinky":
+                LocalDateTime now = LocalDateTime.now();
+                System.out.println(now.toLocalTime().toString());
+                break;
+            default:
+                System.out.println("Tento predmet neviem pouzit");
+        }
     }
 }
