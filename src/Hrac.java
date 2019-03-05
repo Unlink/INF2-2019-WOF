@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class Hrac {
     private Miestnost aktualnaMiestnost;
-    private HashMap<String, Predmet> batoh;
+    private HashMap<String, IPredmet> batoh;
 
     public Hrac(Miestnost startovaciaMiestnost) {
         this.aktualnaMiestnost = startovaciaMiestnost;
@@ -48,7 +48,7 @@ public class Hrac {
     }
 
     public void vezmiPredmet(Prikaz prikaz) {
-        Predmet predmet = this.aktualnaMiestnost.zodvihniPredmet(prikaz.getParameter());
+        IPredmet predmet = this.aktualnaMiestnost.zodvihniPredmet(prikaz.getParameter());
         if (predmet == null) {
             System.out.println("Tento predmet nieje v miestnosti");
         } else {
@@ -60,7 +60,7 @@ public class Hrac {
     public void vypisInventar() {
         if (this.batoh.size() > 0) {
             System.out.println("Inventar:");
-            for (Predmet predmet : this.batoh.values()) {
+            for (IPredmet predmet : this.batoh.values()) {
                 System.out.println("- " + predmet.getNazov());
             }
         } else {
@@ -69,7 +69,7 @@ public class Hrac {
     }
 
     public void pouziPredmet(Prikaz prikaz) {
-        Predmet predmet = this.batoh.get(prikaz.getParameter());
+        IPredmet predmet = this.batoh.get(prikaz.getParameter());
         if (predmet == null) {
             System.out.println("Takyto predmet nemas");
         } else {

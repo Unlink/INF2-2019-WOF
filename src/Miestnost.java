@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class Miestnost {
     private String popisMiestnosti;
     private HashMap<String, Miestnost> vychody;
-    private HashMap<String, Predmet> predmety;
+    private HashMap<String, IPredmet> predmety;
     private final String nazov;
 
     /**
@@ -46,7 +46,7 @@ public class Miestnost {
         this.vychody.put(miestnost.getNazov(), miestnost);
     }
     
-    public void pridajPredmet(Predmet predmet) {
+    public void pridajPredmet(IPredmet predmet) {
         this.predmety.put(predmet.getNazov(), predmet);
     }
 
@@ -78,7 +78,7 @@ public class Miestnost {
         return this.vychody.get(smer);
     }
 
-    public Predmet zodvihniPredmet(String nazov) {
+    public IPredmet zodvihniPredmet(String nazov) {
         return this.predmety.remove(nazov);
     }
     

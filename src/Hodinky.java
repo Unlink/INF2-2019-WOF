@@ -7,29 +7,18 @@ import java.time.LocalDateTime;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author duracik2
- */
-public class Predmet implements IPredmet {
 
-    private final String nazov;
-
-    /**
-     *
-     * @param nazov
-     */
-    public Predmet(String nazov) {
-        this.nazov = nazov;
-    }
+public class Hodinky implements IPredmet {
 
     @Override
     public String getNazov() {
-        return this.nazov;
+        return "hodinky";
     }
 
     @Override
     public void pouzi() {
-        System.out.println("Tento predmet neviem pouzit");
+        LocalDateTime aktualnyCas = LocalDateTime.now();
+        System.out.println(aktualnyCas.toLocalTime().toString());
     }
+    
 }
