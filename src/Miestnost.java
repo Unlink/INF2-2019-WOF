@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class Miestnost {
     private String popisMiestnosti;
     private HashMap<String, Miestnost> vychody;
+    private HashMap<String, Predmet> predmety;
     private final String nazov;
 
     /**
@@ -29,6 +30,7 @@ public class Miestnost {
     public Miestnost(String nazov, String popis) {
         this.popisMiestnosti = popis;
         this.vychody = new HashMap<>();
+        this.predmety = new HashMap<>();
         this.nazov = nazov;
     }
 
@@ -43,6 +45,10 @@ public class Miestnost {
     public void nastavVychod(Miestnost miestnost) {
         this.vychody.put(miestnost.getNazov(), miestnost);
     }
+    
+    public void pridajPredmet(Predmet predmet) {
+        this.predmety.put(predmet.getNazov(), predmet);
+    }
 
     /**
      * @return textovy popis miestnosti.
@@ -56,9 +62,15 @@ public class Miestnost {
         for (String kluc : this.vychody.keySet()) {
             System.out.print(kluc + " ");
         }
+        System.out.println();
         /*for (Miestnost miestnost : this.vychody.values()) {
              System.out.print(miestnost.getNazov() + " ");
         }*/
+        
+        System.out.print("Predmety: ");
+        for (String kluc : this.predmety.keySet()) {
+            System.out.print(kluc + " ");
+        }
         System.out.println();
     }
 
