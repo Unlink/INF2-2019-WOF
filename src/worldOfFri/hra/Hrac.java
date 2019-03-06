@@ -86,8 +86,16 @@ public class Hrac {
 
     public void vypisStatus() {
         System.out.println("---- Aktualny status hraca ----");
-        System.out.println("    Aktualna miestnost: "+this.aktualnaMiestnost.getNazov());
-        System.out.println("    Energia: "+this.energia+"%");
+        System.out.println("    Aktualna miestnost: " + this.aktualnaMiestnost.getNazov());
+        System.out.println("    Energia: " + this.energia + "%");
+    }
+
+    public void zvysEnergiu(int hodnota) {
+        this.energia = Math.min(this.energia + hodnota, 100); // 100% je maximum
+    }
+
+    public IPredmet odstranPredmet(String nazov) {
+        return this.batoh.remove(nazov);
     }
    
 }

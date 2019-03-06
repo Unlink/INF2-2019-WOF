@@ -5,6 +5,7 @@ import worldOfFri.predmety.Kocka;
 import worldOfFri.predmety.Hodinky;
 import worldOfFri.predmety.Predmet;
 import java.util.HashMap;
+import worldOfFri.predmety.Bageta;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -62,6 +63,7 @@ public class MapaHry {
         this.miestnosti.get("terasa").pridajPredmet(new Predmet("pero"));
         this.miestnosti.get("terasa").pridajPredmet(new Hodinky());
         this.miestnosti.get("terasa").pridajPredmet(new Kocka());
+        this.miestnosti.get("terasa").pridajPredmet(new Bageta());
         
         this.startovaciaMiestnost = this.miestnosti.get("terasa");
     }
