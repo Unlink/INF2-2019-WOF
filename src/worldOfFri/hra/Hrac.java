@@ -35,12 +35,14 @@ public class Hrac {
      * Vykona pokus o prechod do miestnosti urcenej danym smerom.
      * Ak je tym smerom vychod, hrac prejde do novej miestnosti.
      * Inak sa vypise chybova sprava do terminaloveho okna.
+     * @param prikaz
+     * @return 
      */
-    void chodDoMiestnosti(Prikaz prikaz) {
+    public boolean chodDoMiestnosti(Prikaz prikaz) {
         if (!prikaz.maParameter()) {
             // ak prikaz nema parameter - druhe slovo - nevedno kam ist
             System.out.println("Chod kam?");
-            return;
+            return false;
         }
         String smer = prikaz.getParameter();
         // Pokus o opustenie aktualnej miestnosti danym vychodom.
@@ -52,6 +54,13 @@ public class Hrac {
             System.out.println("Teraz si v miestnosti " + this.aktualnaMiestnost.getPopis());
             novaMiestnost.vypisInfo();
         }
+        
+        this.energia -= 10;
+        if (this.energia <= 0) {
+            System.out.println("Nemas dostatok energie - KONIEC HRY");
+            return true;
+        }
+        return false;
     }
 
     public void vezmiPredmet(Prikaz prikaz) {

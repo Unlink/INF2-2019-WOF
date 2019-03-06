@@ -94,8 +94,7 @@ public class Hra  {
                 this.vypisNapovedu();
                 return false;
             case "chod":
-                this.hrac.chodDoMiestnosti(prikaz);
-                return false;
+                return this.hrac.chodDoMiestnosti(prikaz);
             case "ukonci":
                 return this.ukonciHru(prikaz);
             case "vezmi":
