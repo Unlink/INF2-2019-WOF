@@ -11,16 +11,29 @@ import worldOfFri.hra.Hrac;
  *
  * @author duracik2
  */
-public class Bageta implements IPredmet {
+public class Jedlo implements IPredmet {
 
+    private final String nazov;
+    private final int energetickaHodnota;
+
+    /**
+     *
+     * @param nazov
+     * @param energetickaHodnota
+     */
+    public Jedlo(String nazov, int energetickaHodnota) {
+        this.nazov = nazov;
+        this.energetickaHodnota = energetickaHodnota;
+    }
+    
     @Override
     public String getNazov() {
-        return "bageta";
+        return this.nazov;
     }
 
     @Override
     public void pouzi(Hrac hrac) {
-        hrac.zvysEnergiu(50);
+        hrac.zvysEnergiu(this.energetickaHodnota);
         hrac.odstranPredmet(this.getNazov());
     }
     
