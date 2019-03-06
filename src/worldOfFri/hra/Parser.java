@@ -55,4 +55,9 @@ public class Parser {
             return new Prikaz(null, parameter); 
         }
     }
+
+    public NazvyPrikazov getPrikazy() {
+        return this.prikazy;
+    }
+    
 }

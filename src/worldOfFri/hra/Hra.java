@@ -122,7 +122,7 @@ public class Hra  {
         System.out.println("Zabludil si. Si sam. Tulas sa po fakulte.");
         System.out.println();
         System.out.println("Mozes pouzit tieto prikazy:");
-        System.out.println("   chod ukonci pomoc");
+        this.parser.getPrikazy().vypisPrikazy();
     }
 
 

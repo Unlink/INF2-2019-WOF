@@ -31,4 +31,11 @@ public class NazvyPrikazov {
         // ak algoritmus dosiahne tento bod, parameter nie je platny prikaz
         return false;
     }
+    
+    public void vypisPrikazy() {
+        for (String prikaz : PLATNE_PRIKAZY) {
+            System.out.println(prikaz + " ");
+        }
+        System.out.println("");
+    }
 }
