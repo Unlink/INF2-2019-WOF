@@ -1,5 +1,7 @@
 package worldOfFri.predmety;
 
+import worldOfFri.hra.Hrac;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,6 +16,6 @@ public interface IPredmet {
 
     String getNazov();
 
-    void pouzi();
+    void pouzi(Hrac hrac);
     
 }

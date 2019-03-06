@@ -2,6 +2,7 @@ package worldOfFri.predmety;
 
 
 import java.time.LocalDateTime;
+import worldOfFri.hra.Hrac;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,7 +32,7 @@ public class Predmet implements IPredmet {
     }
 
     @Override
-    public void pouzi() {
+    public void pouzi(Hrac hrac) {
         System.out.println("Tento predmet neviem pouzit");
     }
 }

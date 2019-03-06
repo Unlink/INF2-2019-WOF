@@ -80,7 +80,7 @@ public class Hrac {
         if (predmet == null) {
             System.out.println("Takyto predmet nemas");
         } else {
-            predmet.pouzi();
+            predmet.pouzi(this);
         }
     }
 

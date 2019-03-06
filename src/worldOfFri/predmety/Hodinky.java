@@ -2,6 +2,7 @@ package worldOfFri.predmety;
 
 
 import java.time.LocalDateTime;
+import worldOfFri.hra.Hrac;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,7 +19,7 @@ public class Hodinky implements IPredmet {
     }
 
     @Override
-    public void pouzi() {
+    public void pouzi(Hrac hrac) {
         LocalDateTime aktualnyCas = LocalDateTime.now();
         System.out.println(aktualnyCas.toLocalTime().toString());
     }
