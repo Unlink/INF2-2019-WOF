@@ -18,10 +18,13 @@ import java.util.HashMap;
 public class Hrac {
     private Miestnost aktualnaMiestnost;
     private HashMap<String, IPredmet> batoh;
+    
+    private int energia;
 
     public Hrac(Miestnost startovaciaMiestnost) {
         this.aktualnaMiestnost = startovaciaMiestnost;
         this.batoh = new HashMap<>();
+        this.energia = 100; //100%
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -79,6 +82,12 @@ public class Hrac {
         } else {
             predmet.pouzi();
         }
+    }
+
+    public void vypisStatus() {
+        System.out.println("---- Aktualny status hraca ----");
+        System.out.println("    Aktualna miestnost: "+this.aktualnaMiestnost.getNazov());
+        System.out.println("    Energia: "+this.energia+"%");
     }
    
 }

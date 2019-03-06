@@ -107,6 +107,9 @@ public class Hra  {
             case "pouzi":
                 this.hrac.pouziPredmet(prikaz);
                 return false;
+            case "status":
+                this.hrac.vypisStatus();
+                return false;
             default:
                 return false;
         }
