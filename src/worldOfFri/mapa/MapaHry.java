@@ -61,6 +61,7 @@ public class MapaHry {
         }
         
         this.miestnosti.get("terasa").pridajPredmet(new Predmet("pero"));
+        this.miestnosti.get("terasa").pridajPredmet(new Predmet("pero"));
         this.miestnosti.get("terasa").pridajPredmet(new Hodinky());
         this.miestnosti.get("terasa").pridajPredmet(new Kocka());
         this.miestnosti.get("terasa").pridajPredmet(new Jedlo("bageta", 50));

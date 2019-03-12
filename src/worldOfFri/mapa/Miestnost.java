@@ -1,6 +1,7 @@
 package worldOfFri.mapa;
 
 
+import java.util.ArrayList;
 import worldOfFri.predmety.IPredmet;
 import java.util.HashMap;
 
@@ -19,7 +20,7 @@ import java.util.HashMap;
 public class Miestnost {
     private String popisMiestnosti;
     private HashMap<String, Miestnost> vychody;
-    private HashMap<String, IPredmet> predmety;
+    private HashMap<String, ArrayList<IPredmet>> predmety;
     private final String nazov;
 
     /**
@@ -50,7 +51,10 @@ public class Miestnost {
     }
     
     public void pridajPredmet(IPredmet predmet) {
-        this.predmety.put(predmet.getNazov(), predmet);
+        if (!this.predmety.containsKey(predmet.getNazov())) {
+            this.predmety.put(predmet.getNazov(), new ArrayList<IPredmet>());
+        }
+        this.predmety.get(predmet.getNazov()).add(predmet);
     }
 
     /**
@@ -72,7 +76,8 @@ public class Miestnost {
         
         System.out.print("Predmety: ");
         for (String kluc : this.predmety.keySet()) {
-            System.out.print(kluc + " ");
+            int size = this.predmety.get(kluc).size();
+            System.out.print(kluc + (size > 1 ? "("+size+")" : "") + " ");
         }
         System.out.println();
     }
@@ -82,7 +87,15 @@ public class Miestnost {
     }
 
     public IPredmet zodvihniPredmet(String nazov) {
-        return this.predmety.remove(nazov);
+        if (this.predmety.containsKey(nazov)) {
+            IPredmet predmet = this.predmety.get(nazov).remove(0);
+            if (this.predmety.get(nazov).isEmpty()) {
+                this.predmety.remove(nazov);
+            }
+            return predmet;
+        }
+        
+        return null;
     }
     
     
