@@ -75,8 +75,10 @@ public class MapaHry {
     }
     
     private void prepojMiestnosti(String prva, String druha) {
-        this.miestnosti.get(prva).nastavVychod(this.miestnosti.get(druha));
-        this.miestnosti.get(druha).nastavVychod(this.miestnosti.get(prva));
+        Dvere dvere = new Dvere(this.miestnosti.get(druha), this.miestnosti.get(prva));
+        
+        this.miestnosti.get(prva).nastavVychod(dvere);
+        this.miestnosti.get(druha).nastavVychod(dvere);
     }
     
     public Miestnost dajStartovaciuMiestnost() {
