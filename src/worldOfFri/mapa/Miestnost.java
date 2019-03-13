@@ -18,7 +18,7 @@ import java.util.HashMap;
  */
 public class Miestnost {
     private String popisMiestnosti;
-    private HashMap<String, Dvere> vychody;
+    private HashMap<String, IDvere> vychody;
     private HashMap<String, IPredmet> predmety;
     private final String nazov;
 
@@ -45,7 +45,7 @@ public class Miestnost {
      * Nastavi vychod z miestnosti.
      * @param dvere
      */
-    public void nastavVychod(Dvere dvere) {
+    public void nastavVychod(IDvere dvere) {
         this.vychody.put(dvere.dajMiestnost(this).getNazov(), dvere);
     }
     
@@ -77,12 +77,16 @@ public class Miestnost {
         System.out.println();
     }
 
-    public Dvere dajVychod(String smer) {
+    public IDvere dajVychod(String smer) {
         return this.vychody.get(smer);
     }
 
     public IPredmet zodvihniPredmet(String nazov) {
         return this.predmety.remove(nazov);
+    }
+
+    public Iterable<IDvere> dajVsetkyVychody() {
+        return this.vychody.values();
     }
     
     

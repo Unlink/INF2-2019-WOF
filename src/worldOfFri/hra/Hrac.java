@@ -5,6 +5,7 @@ import worldOfFri.mapa.Miestnost;
 import worldOfFri.predmety.IPredmet;
 import java.util.HashMap;
 import worldOfFri.mapa.Dvere;
+import worldOfFri.mapa.IDvere;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -47,7 +48,7 @@ public class Hrac {
         }
         String smer = prikaz.getParameter();
         // Pokus o opustenie aktualnej miestnosti danym vychodom.
-        Dvere dvere = this.aktualnaMiestnost.dajVychod(smer);
+        IDvere dvere = this.aktualnaMiestnost.dajVychod(smer);
         if (dvere == null) {
             System.out.println("Tam nie je vychod!");
         } else if (!dvere.suOtvorene()) {

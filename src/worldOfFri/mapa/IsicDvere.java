@@ -9,24 +9,30 @@ package worldOfFri.mapa;
  *
  * @author duracik2
  */
-public class Dvere implements IDvere {
+public class IsicDvere implements IDvere {
 
     private final Miestnost prva;
     private final Miestnost druha;
+    private boolean otvorene;
 
     /**
      *
      * @param prva
      * @param druha
      */
-    public Dvere(Miestnost prva, Miestnost druha) {
+    public IsicDvere(Miestnost prva, Miestnost druha) {
         this.prva = prva;
         this.druha = druha;
+        this.otvorene = false;
     }
     
     @Override
     public boolean suOtvorene() {
-        return true;
+        return this.otvorene;
+    }
+    
+    public void otvor() {
+        this.otvorene = true;
     }
 
     @Override
