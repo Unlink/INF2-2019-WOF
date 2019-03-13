@@ -53,7 +53,7 @@ public class Hrac {
         } else if (!dvere.suOtvorene()) {
             System.out.println("Tieto dvere su zatvorene");
         } else {
-            this.aktualnaMiestnost = dvere.dajMiestnost(aktualnaMiestnost);
+            this.aktualnaMiestnost = dvere.dajMiestnost(this.aktualnaMiestnost);
             System.out.println("Teraz si v miestnosti " + this.aktualnaMiestnost.getPopis());
             this.aktualnaMiestnost.vypisInfo();
         }

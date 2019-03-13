@@ -11,16 +11,26 @@ package worldOfFri.mapa;
  */
 public class Dvere {
 
-    Dvere(Miestnost get, Miestnost get0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private final Miestnost prva;
+    private final Miestnost druha;
+
+    /**
+     *
+     * @param prva
+     * @param druha
+     */
+    public Dvere(Miestnost prva, Miestnost druha) {
+        this.prva = prva;
+        this.druha = druha;
     }
     
     public boolean suOtvorene() {
         return true;
     }
 
-    public Miestnost dajMiestnost(Miestnost aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Miestnost dajMiestnost(Miestnost aktualna) {
+        if (aktualna == this.druha) return this.prva;
+        else return druha;
     }
     
 }
