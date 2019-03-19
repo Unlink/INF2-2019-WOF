@@ -21,7 +21,12 @@ public class Bufetarka extends Npc {
     @Override
     public void oslov(Hrac hrac) {
         super.oslov(hrac);
-        hrac.pridajPredmet(new Jedlo("bageta", 50));
-        System.out.println("Nech sa paci, bageta");
+        if (hrac.zaplat(1.20)) {
+            hrac.pridajPredmet(new Jedlo("bageta", 50));
+            System.out.println("Nech sa paci, bageta");
+        }
+        else {
+            System.out.println("Prepac, ale nemas dost penazi");
+        }
     }
 }

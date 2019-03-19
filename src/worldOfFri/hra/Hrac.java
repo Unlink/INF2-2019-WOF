@@ -4,8 +4,10 @@ package worldOfFri.hra;
 import worldOfFri.mapa.Miestnost;
 import worldOfFri.predmety.IPredmet;
 import java.util.HashMap;
+import java.util.stream.Stream;
 import worldOfFri.hra.npc.Npc;
 import worldOfFri.mapa.IDvere;
+import worldOfFri.predmety.IPlatidlo;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,11 +24,13 @@ public class Hrac {
     private HashMap<String, IPredmet> batoh;
     
     private int energia;
+    private Penazenka penazenka;
 
     public Hrac(Miestnost startovaciaMiestnost) {
         this.aktualnaMiestnost = startovaciaMiestnost;
         this.batoh = new HashMap<>();
         this.energia = 100; //100%
+        this.penazenka = new Penazenka(2.0);
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -122,6 +126,18 @@ public class Hrac {
 
     public void pridajPredmet(IPredmet predmet) {
         this.batoh.put(predmet.getNazov(), predmet);
+    }
+    
+    public boolean zaplat(double ciastka) {
+        for (IPredmet predmet : this.batoh.values()) {
+            if (predmet instanceof IPlatidlo) {
+                IPlatidlo platidlo = (IPlatidlo)predmet;
+                if (platidlo.zaplat(ciastka)) {
+                    return true;
+                }
+            } 
+        }
+        return this.penazenka.zaplat(ciastka);
     }
    
 }

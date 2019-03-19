@@ -6,6 +6,7 @@
 package worldOfFri.predmety;
 
 import worldOfFri.hra.Hrac;
+import worldOfFri.hra.Penazenka;
 import worldOfFri.mapa.Dvere;
 import worldOfFri.mapa.IDvere;
 import worldOfFri.mapa.IsicDvere;
@@ -15,8 +16,7 @@ import worldOfFri.mapa.Miestnost;
  *
  * @author duracik2
  */
-public class Isic implements IPredmet{
-
+public class Isic extends Penazenka implements IPredmet {
     @Override
     public String getNazov() {
         return "isic";
