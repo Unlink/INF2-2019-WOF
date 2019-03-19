@@ -5,7 +5,6 @@ import worldOfFri.mapa.Miestnost;
 import worldOfFri.predmety.IPredmet;
 import java.util.HashMap;
 import worldOfFri.hra.npc.Npc;
-import worldOfFri.mapa.Dvere;
 import worldOfFri.mapa.IDvere;
 
 /*
@@ -73,7 +72,7 @@ public class Hrac {
         if (predmet == null) {
             System.out.println("Tento predmet nieje v miestnosti");
         } else {
-            this.batoh.put(predmet.getNazov(), predmet);
+            pridajPredmet(predmet);
             System.out.println("Mas novy predmet - " + predmet.getNazov());
         }
     }
@@ -119,6 +118,10 @@ public class Hrac {
         } else {
             npc.oslov(this);
         }
+    }
+
+    public void pridajPredmet(IPredmet predmet) {
+        this.batoh.put(predmet.getNazov(), predmet);
     }
    
 }

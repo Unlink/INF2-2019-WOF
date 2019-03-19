@@ -5,6 +5,7 @@ import worldOfFri.predmety.Kocka;
 import worldOfFri.predmety.Hodinky;
 import worldOfFri.predmety.Predmet;
 import java.util.HashMap;
+import worldOfFri.hra.npc.Bufetarka;
 import worldOfFri.hra.npc.Npc;
 import worldOfFri.predmety.Isic;
 import worldOfFri.predmety.Jedlo;
@@ -70,7 +71,7 @@ public class MapaHry {
         this.miestnosti.get("terasa").pridajPredmet(new Jedlo("elixir", 100));
         
         this.miestnosti.get("terasa").pridajNpc(new Npc("vratnicka"));
-        
+        this.miestnosti.get("terasa").pridajNpc(new Bufetarka());
         this.startovaciaMiestnost = this.miestnosti.get("terasa");
     }
 
