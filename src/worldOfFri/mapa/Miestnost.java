@@ -3,6 +3,7 @@ package worldOfFri.mapa;
 
 import worldOfFri.predmety.IPredmet;
 import java.util.HashMap;
+import worldOfFri.hra.npc.Npc;
 
 /**
  * Trieda Miestnost realizuje jednu miestnost/priestor v celom priestore hry.
@@ -20,6 +21,7 @@ public class Miestnost {
     private String popisMiestnosti;
     private HashMap<String, IDvere> vychody;
     private HashMap<String, IPredmet> predmety;
+    private HashMap<String, Npc> npc;
     private final String nazov;
 
     /**
@@ -34,6 +36,7 @@ public class Miestnost {
         this.popisMiestnosti = popis;
         this.vychody = new HashMap<>();
         this.predmety = new HashMap<>();
+        this.npc = new HashMap<>();
         this.nazov = nazov;
     }
 
@@ -53,6 +56,10 @@ public class Miestnost {
         this.predmety.put(predmet.getNazov(), predmet);
     }
 
+    public void pridajNpc(Npc npc) {
+        this.npc.put(npc.getMeno(), npc);
+    }
+    
     /**
      * @return textovy popis miestnosti.
      */
@@ -75,10 +82,20 @@ public class Miestnost {
             System.out.print(kluc + " ");
         }
         System.out.println();
+        
+        System.out.print("NPC v miestnosti: ");
+        for (String kluc : this.npc.keySet()) {
+            System.out.print(kluc + " ");
+        }
+        System.out.println();
     }
 
     public IDvere dajVychod(String smer) {
         return this.vychody.get(smer);
+    }
+    
+    public Npc dajNpc(String meno) {
+        return this.npc.get(meno);
     }
 
     public IPredmet zodvihniPredmet(String nazov) {

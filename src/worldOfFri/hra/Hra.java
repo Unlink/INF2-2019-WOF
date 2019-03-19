@@ -109,6 +109,9 @@ public class Hra  {
             case "status":
                 this.hrac.vypisStatus();
                 return false;
+            case "oslov":
+                this.hrac.oslovNpc(prikaz.getParameter());
+                return false;
             default:
                 return false;
         }

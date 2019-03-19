@@ -4,6 +4,7 @@ package worldOfFri.hra;
 import worldOfFri.mapa.Miestnost;
 import worldOfFri.predmety.IPredmet;
 import java.util.HashMap;
+import worldOfFri.hra.npc.Npc;
 import worldOfFri.mapa.Dvere;
 import worldOfFri.mapa.IDvere;
 
@@ -109,6 +110,15 @@ public class Hrac {
 
     public IPredmet odstranPredmet(String nazov) {
         return this.batoh.remove(nazov);
+    }
+
+    public void oslovNpc(String parameter) {
+        Npc npc = this.aktualnaMiestnost.dajNpc(parameter);
+        if (npc == null) {
+            System.out.println("Nikto s takymto menom v miestnosti nieje");
+        } else {
+            npc.oslov(this);
+        }
     }
    
 }
