@@ -15,7 +15,7 @@ import worldOfFri.predmety.Jedlo;
 public class Bufetarka extends Npc {
     
     public Bufetarka() {
-        super("bufetarka");
+        super("bufetarka", null);
     }
 
     @Override

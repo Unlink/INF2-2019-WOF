@@ -29,6 +29,27 @@ public class Otazka {
     public String getTextOtazky() {
         return textOtazky;
     }
+
+    public void vypisMoznosti() {
+        int cislo = 1;
+        for (Odpoved odpoved : this.odpovede) {
+            System.out.println(" " + (cislo++) + " - " + odpoved.getTextOdpovede());
+        }
+        System.out.println(" 0 - Koniec");
+    }
+
+    public Otazka zvolOdpoved(int nacitanaHodnota) {
+        if (nacitanaHodnota == 0) {
+            return null;
+        }
+        else {
+            return this.odpovede.get(nacitanaHodnota-1).getNasledujucaOtazka();
+        }
+    }
+
+    public boolean jeSpravnaMoznost(int nacitanaHodnota) {
+        return nacitanaHodnota >= 0 && nacitanaHodnota <= this.odpovede.size();
+    }
     
     
     

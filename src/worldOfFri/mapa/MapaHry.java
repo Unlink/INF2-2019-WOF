@@ -72,7 +72,7 @@ public class MapaHry {
         this.miestnosti.get("terasa").pridajPredmet(new Jedlo("bageta", 50));
         this.miestnosti.get("terasa").pridajPredmet(new Jedlo("elixir", 100));
         
-        this.miestnosti.get("terasa").pridajNpc(new Npc("vratnicka"));
+        this.miestnosti.get("terasa").pridajNpc(new Npc("vratnicka", this.vytvorDialogPreVratnicku()));
         this.miestnosti.get("terasa").pridajNpc(new Bufetarka());
         this.startovaciaMiestnost = this.miestnosti.get("terasa");
     }
