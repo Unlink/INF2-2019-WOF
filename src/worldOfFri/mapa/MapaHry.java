@@ -7,6 +7,8 @@ import worldOfFri.predmety.Predmet;
 import java.util.HashMap;
 import worldOfFri.hra.npc.Bufetarka;
 import worldOfFri.hra.npc.Npc;
+import worldOfFri.hra.npc.rozohovor.Odpoved;
+import worldOfFri.hra.npc.rozohovor.Otazka;
 import worldOfFri.predmety.Isic;
 import worldOfFri.predmety.Jedlo;
 
@@ -73,6 +75,30 @@ public class MapaHry {
         this.miestnosti.get("terasa").pridajNpc(new Npc("vratnicka"));
         this.miestnosti.get("terasa").pridajNpc(new Bufetarka());
         this.startovaciaMiestnost = this.miestnosti.get("terasa");
+    }
+    
+    private Otazka vytvorDialogPreVratnicku() {
+        //Rozhovor pre vratnicku
+        //* Dobry den
+        //  - Dobry den -> koniec
+        //  - Chcel by som kluc 
+        //                  * A aky?
+        //                     - Od FRA323 -> da mi kluc a koniec
+        //                     - Od FRA13 -> da mi kluc a koniec
+        //  - Prosim, nepocul som vas -> znova mi zopakuje tento rozhovor
+        
+        
+        Otazka dobry = new Otazka("Dobry den");
+        Otazka akyKluc = new Otazka("Aky kluc chcete");
+        
+        dobry.pridajOdpoved(new Odpoved("Dobry den", null));
+        dobry.pridajOdpoved(new Odpoved("Chcel by som kluc", akyKluc));
+        dobry.pridajOdpoved(new Odpoved("Prosim, nepocul som vas", dobry));
+        
+        akyKluc.pridajOdpoved(new Odpoved("Od FRA323", null));
+        akyKluc.pridajOdpoved(new Odpoved("Od FRA13", null));
+        
+        return dobry;
     }
 
     private void vytvorMiestnost(String nazov, String popis) {
