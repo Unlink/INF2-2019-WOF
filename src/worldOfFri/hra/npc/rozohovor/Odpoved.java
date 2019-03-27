@@ -14,9 +14,9 @@ import worldOfFri.hra.Hrac;
 public class Odpoved {
 
     private final String textOdpovede;
-    private final Otazka nasledujucaOtazka;
+    private final IOtazka nasledujucaOtazka;
 
-    public Odpoved(String textOdpovede, Otazka nasledujucaOtazka) {
+    public Odpoved(String textOdpovede, IOtazka nasledujucaOtazka) {
         this.textOdpovede = textOdpovede;
         this.nasledujucaOtazka = nasledujucaOtazka;
     }
@@ -25,7 +25,7 @@ public class Odpoved {
         return textOdpovede;
     }
 
-    public Otazka getNasledujucaOtazka() {
+    public IOtazka getNasledujucaOtazka() {
         return nasledujucaOtazka;
     }
     

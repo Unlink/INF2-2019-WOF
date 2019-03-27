@@ -7,6 +7,7 @@ package worldOfFri.hra.npc;
 
 import java.util.Scanner;
 import worldOfFri.hra.Hrac;
+import worldOfFri.hra.npc.rozohovor.IOtazka;
 import worldOfFri.hra.npc.rozohovor.Otazka;
 
 /**
@@ -16,9 +17,9 @@ import worldOfFri.hra.npc.rozohovor.Otazka;
 public class Npc {
 
     private final String meno;
-    private final Otazka zaciatokRozhovoru;
+    private final IOtazka zaciatokRozhovoru;
 
-    public Npc(String meno, Otazka zaciatokRozhovoru) {
+    public Npc(String meno, IOtazka zaciatokRozhovoru) {
         this.meno = meno;
         this.zaciatokRozhovoru = zaciatokRozhovoru;
     }
@@ -33,12 +34,12 @@ public class Npc {
             return;
         }
         
-        Otazka aktualnaOtazka = this.zaciatokRozhovoru;
+        IOtazka aktualnaOtazka = this.zaciatokRozhovoru;
         Scanner nacitavac = new Scanner(System.in);
         
         do {
             System.out.println(aktualnaOtazka.getTextOtazky());
-            aktualnaOtazka.vypisMoznosti();
+            aktualnaOtazka.vypisMoznosti(hrac);
             int nacitanaHodnota;
             do {
                 System.out.print("  > ");

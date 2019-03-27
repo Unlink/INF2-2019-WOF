@@ -12,7 +12,7 @@ import worldOfFri.hra.Hrac;
  * Replika NPC postavy
  * @author duracik2
  */
-public class Otazka {
+public class Otazka implements IOtazka {
 
     private final String textOtazky;
     private ArrayList<Odpoved> odpovede;
@@ -27,11 +27,13 @@ public class Otazka {
         this.odpovede.add(odpoved);
     }
     
+    @Override
     public String getTextOtazky() {
         return textOtazky;
     }
 
-    public void vypisMoznosti() {
+    @Override
+    public void vypisMoznosti(Hrac hrac) {
         int cislo = 1;
         for (Odpoved odpoved : this.odpovede) {
             System.out.println(" " + (cislo++) + " - " + odpoved.getTextOdpovede());
@@ -39,7 +41,8 @@ public class Otazka {
         System.out.println(" 0 - Koniec");
     }
 
-    public Otazka zvolOdpoved(int nacitanaHodnota, Hrac hrac) {
+    @Override
+    public IOtazka zvolOdpoved(int nacitanaHodnota, Hrac hrac) {
         if (nacitanaHodnota == 0) {
             return null;
         }
@@ -50,6 +53,7 @@ public class Otazka {
         }
     }
 
+    @Override
     public boolean jeSpravnaMoznost(int nacitanaHodnota) {
         return nacitanaHodnota >= 0 && nacitanaHodnota <= this.odpovede.size();
     }

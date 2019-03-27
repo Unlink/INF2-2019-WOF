@@ -138,5 +138,9 @@ public class Hrac {
         }
         return this.penazenka.zaplat(ciastka);
     }
+
+    public double dajStavPenazenky() {
+        return this.penazenka.getStav();
+    }
    
 }

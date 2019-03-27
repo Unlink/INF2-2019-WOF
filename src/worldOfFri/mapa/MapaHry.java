@@ -10,6 +10,7 @@ import worldOfFri.hra.npc.Npc;
 import worldOfFri.hra.npc.rozohovor.Odpoved;
 import worldOfFri.hra.npc.rozohovor.OdpovedPredajPredmet;
 import worldOfFri.hra.npc.rozohovor.Otazka;
+import worldOfFri.hra.npc.rozohovor.OtazkaDobitieIsic;
 import worldOfFri.predmety.Isic;
 import worldOfFri.predmety.Jedlo;
 
@@ -118,7 +119,7 @@ public class MapaHry {
         Otazka nakup = new Otazka("Vyber si");
         
         dobry.pridajOdpoved(new Odpoved("Chcel by som nakupit", nakup));
-        dobry.pridajOdpoved(new Odpoved("Nabit isic", dobry));
+        dobry.pridajOdpoved(new Odpoved("Nabit isic", new OtazkaDobitieIsic(dobry)));
         dobry.pridajOdpoved(new Odpoved("Zistit stav na isic", dobry));
         
         nakup.pridajOdpoved(new OdpovedPredajPredmet(new Jedlo("bageta", 50), 1.20, dobry));
