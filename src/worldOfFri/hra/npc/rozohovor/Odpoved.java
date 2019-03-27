@@ -5,6 +5,8 @@
  */
 package worldOfFri.hra.npc.rozohovor;
 
+import worldOfFri.hra.Hrac;
+
 /**
  * Odpoved hraca
  * @author duracik2
@@ -27,5 +29,8 @@ public class Odpoved {
         return nasledujucaOtazka;
     }
     
+    public void vykonaj(Hrac hrac) {
+        
+    }
     
 }

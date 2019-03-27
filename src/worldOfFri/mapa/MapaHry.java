@@ -8,6 +8,7 @@ import java.util.HashMap;
 import worldOfFri.hra.npc.Bufetarka;
 import worldOfFri.hra.npc.Npc;
 import worldOfFri.hra.npc.rozohovor.Odpoved;
+import worldOfFri.hra.npc.rozohovor.OdpovedPredajPredmet;
 import worldOfFri.hra.npc.rozohovor.Otazka;
 import worldOfFri.predmety.Isic;
 import worldOfFri.predmety.Jedlo;
@@ -73,7 +74,8 @@ public class MapaHry {
         this.miestnosti.get("terasa").pridajPredmet(new Jedlo("elixir", 100));
         
         this.miestnosti.get("terasa").pridajNpc(new Npc("vratnicka", this.vytvorDialogPreVratnicku()));
-        this.miestnosti.get("terasa").pridajNpc(new Bufetarka());
+        this.miestnosti.get("terasa").pridajNpc(new Npc("bufetarka", this.vytvorDialogPreBufetarku()));
+//        this.miestnosti.get("terasa").pridajNpc(new Bufetarka());
         this.startovaciaMiestnost = this.miestnosti.get("terasa");
     }
     
@@ -97,6 +99,30 @@ public class MapaHry {
         
         akyKluc.pridajOdpoved(new Odpoved("Od FRA323", null));
         akyKluc.pridajOdpoved(new Odpoved("Od FRA13", null));
+        
+        return dobry;
+    }
+    
+    
+    private Otazka vytvorDialogPreBufetarku() {
+        //Rozhovor pre bufetarku
+        //* Dobry den
+        //  - Chcel by som nakupit
+        //                  * Vyber si
+        //                     - Bageta
+        //                     - Navleky
+        //  - Nabit isic
+        //  - Zistit stav na isic
+        
+        Otazka dobry = new Otazka("Dobry den");
+        Otazka nakup = new Otazka("Vyber si");
+        
+        dobry.pridajOdpoved(new Odpoved("Chcel by som nakupit", nakup));
+        dobry.pridajOdpoved(new Odpoved("Nabit isic", dobry));
+        dobry.pridajOdpoved(new Odpoved("Zistit stav na isic", dobry));
+        
+        nakup.pridajOdpoved(new OdpovedPredajPredmet(new Jedlo("bageta", 50), 1.20, dobry));
+        nakup.pridajOdpoved(new OdpovedPredajPredmet(new Predmet("navleky"), .30, dobry));
         
         return dobry;
     }

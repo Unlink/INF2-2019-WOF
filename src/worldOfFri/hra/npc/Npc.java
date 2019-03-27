@@ -43,8 +43,8 @@ public class Npc {
             do {
                 System.out.print("  > ");
                 nacitanaHodnota = nacitavac.nextInt();
-            } while (aktualnaOtazka.jeSpravnaMoznost(nacitanaHodnota));
-            aktualnaOtazka = aktualnaOtazka.zvolOdpoved(nacitanaHodnota);
+            } while (!aktualnaOtazka.jeSpravnaMoznost(nacitanaHodnota));
+            aktualnaOtazka = aktualnaOtazka.zvolOdpoved(nacitanaHodnota, hrac);
         } while (aktualnaOtazka != null);
 
     }

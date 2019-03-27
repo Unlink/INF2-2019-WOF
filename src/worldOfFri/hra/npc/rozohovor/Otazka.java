@@ -6,6 +6,7 @@
 package worldOfFri.hra.npc.rozohovor;
 
 import java.util.ArrayList;
+import worldOfFri.hra.Hrac;
 
 /**
  * Replika NPC postavy
@@ -38,12 +39,14 @@ public class Otazka {
         System.out.println(" 0 - Koniec");
     }
 
-    public Otazka zvolOdpoved(int nacitanaHodnota) {
+    public Otazka zvolOdpoved(int nacitanaHodnota, Hrac hrac) {
         if (nacitanaHodnota == 0) {
             return null;
         }
         else {
-            return this.odpovede.get(nacitanaHodnota-1).getNasledujucaOtazka();
+            Odpoved odpoved = this.odpovede.get(nacitanaHodnota-1);
+            odpoved.vykonaj(hrac);
+            return odpoved.getNasledujucaOtazka();
         }
     }
 
