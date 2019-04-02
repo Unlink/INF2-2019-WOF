@@ -1,10 +1,12 @@
 package worldOfFri.hra;
 
-
+import java.util.ArrayList;
 import worldOfFri.mapa.Miestnost;
 import worldOfFri.predmety.IPredmet;
 import java.util.HashMap;
 import worldOfFri.hra.npc.Npc;
+import worldOfFri.hra.ulohy.Uloha;
+import worldOfFri.hra.ulohy.UlohaZiskajPredmet;
 import worldOfFri.mapa.IDvere;
 import worldOfFri.predmety.IPlatidlo;
 
@@ -22,6 +24,8 @@ public class Hrac {
     private Miestnost aktualnaMiestnost;
     private HashMap<String, IPredmet> batoh;
     
+    private ArrayList<Uloha> ulohy;
+    
     private int energia;
     private Penazenka penazenka;
 
@@ -30,6 +34,9 @@ public class Hrac {
         this.batoh = new HashMap<>();
         this.energia = 100; //100%
         this.penazenka = new Penazenka(2.0);
+        this.ulohy = new ArrayList<>();
+        
+        this.pridajUlohu(new UlohaZiskajPredmet("bageta"));
     }
 
     public Miestnost getAktualnaMiestnost() {
@@ -67,6 +74,7 @@ public class Hrac {
             System.out.println("Nemas dostatok energie - KONIEC HRY");
             return true;
         }
+        skontrolujUlohy();
         return false;
     }
 
@@ -122,9 +130,14 @@ public class Hrac {
             npc.oslov(this);
         }
     }
+    
+     public IPredmet dajPredmet(String nazov) {
+        return this.batoh.get(nazov);
+    }
 
     public void pridajPredmet(IPredmet predmet) {
         this.batoh.put(predmet.getNazov(), predmet);
+        this.skontrolujUlohy();
     }
     
     public boolean zaplat(double ciastka) {
@@ -141,6 +154,16 @@ public class Hrac {
 
     public double dajStavPenazenky() {
         return this.penazenka.getStav();
+    }
+    
+    public void pridajUlohu(Uloha uloha) {
+        this.ulohy.add(uloha);
+    }
+    
+    private void skontrolujUlohy() {
+        for (Uloha uloha : ulohy) {
+            uloha.skontolujSplnenie(this);
+        }
     }
    
 }
